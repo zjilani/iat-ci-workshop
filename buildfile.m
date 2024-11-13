@@ -8,9 +8,7 @@ plan = buildplan(localfunctions);
 
 % Add a task to run tests
 plan("test") = matlab.buildtool.tasks.TestTask("tests");
-
-% Make the "test" task the default task in the plan
-plan.DefaultTasks = "test";
+plan("test").Description = "Run all unit tests";
 
 end
 
