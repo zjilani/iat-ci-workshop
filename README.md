@@ -1,6 +1,6 @@
-| **Azure<sup>&reg;</sup>&nbsp;DevOps** | **CircleCI<sup>&reg;</sup>** | **GitHub<sup>&reg;</sup>&nbsp;Actions** | 
-|:---------------------------|:-----------------:|:----------------------------:|
-| [![Build Status](https://dev.azure.com/iat-ci/ci-configuration-examples/_apis/build/status/mathworks.ci-configuration-examples)](https://dev.azure.com/iat-ci/ci-configuration-examples/_build) <br> ![Azure DevOps Coverage](https://img.shields.io/azure-devops/coverage/iat-ci/ci-configuration-examples/38) | [![CircleCI](https://circleci.com/gh/mathworks/ci-configuration-examples.svg?style=svg)](https://app.circleci.com/pipelines/github/mathworks/ci-configuration-examples) <br><br> | [![MATLAB](https://github.com/mathworks/ci-configuration-examples/actions/workflows/ci.yml/badge.svg)](https://github.com/mathworks/ci-configuration-examples/actions/workflows/ci.yml) <br><br> |
+| **GitHub<sup>&reg;</sup>&nbsp;Actions** | 
+|:---------------------------------------:|
+| [![MATLAB](https://github.com/mathworks/ci-configuration-examples/actions/workflows/ci.yml/badge.svg)](https://github.com/mathworks/ci-configuration-examples/actions/workflows/ci.yml) <br><br> |
 
 
 # Continuous Integration (CI) configuration examples for MATLAB<sup>&reg;</sup>
@@ -49,34 +49,11 @@ Badges look really great, but they're not always easy to set up. Take a look at 
 
 <br>
 
-| **Azure&nbsp;DevOps** |  |
-|:---------------------------|:-|
-| Badges | [![Build Status](https://dev.azure.com/iat-ci/ci-configuration-examples/_apis/build/status/mathworks.ci-configuration-examples)](https://dev.azure.com/iat-ci/ci-configuration-examples/_build) <br> ![Azure DevOps Coverage](https://img.shields.io/azure-devops/coverage/iat-ci/ci-configuration-examples/38) |
-| Badge Code | \[\!\[Build Status](https[]()://dev.azure.com/***AZURE_DEVOPS_ORG***/***AZURE_DEVOPS_PROJECT_NAME***/_apis/build/status/***GITHUB_USERNAME***.***GITHUB_REPO_NAME***)](https[]()://dev.azure.com/***AZURE_DEVOPS_ORG***/***AZURE_DEVOPS_PROJECT_NAME***/_build) <br><br> \!\[Azure DevOps Coverage](https[]()://img.shields.io/azure-devops/coverage/***AZURE_DEVOPS_ORG***/***AZURE_DEVOPS_PROJECT_NAME***/***AZURE_DEVOPS_DEFINITION_ID***) |
-| Badge Help | [Blog with helpful information for setting up Azure DevOps badges](https://gregorsuttie.com/2019/03/20/azure-devops-add-your-build-status-badges-to-your-wiki/) |
-
-<br>
-
-| **CircleCI** |  |
-|:------------------|:-|
-| Badge | [![CircleCI](https://circleci.com/gh/mathworks/ci-configuration-examples.svg?style=svg)](https://circleci.com/gh/mathworks/ci-configuration-examples) |
-| Badge Code | \[\!\[CircleCI](https[]()://circleci.com/***SOURCE_CONTROL_SYSTEM***/***GITHUB_USERNAME***/***GITHUB_REPO_NAME***.svg?style=svg)](https[]()://circleci.com/***SOURCE_CONTROL_SYSTEM***/***GITHUB_USERNAME***/***GITHUB_REPO_NAME***) |
-| Badge Help | [CircleCI documentation for setting up badges](https://circleci.com/docs/2.0/status-badges "CircleCI documentation for setting up badges") |
-
-<br>
-
 | **GitHub&nbsp;Actions** |  |
 |:-----------------------------|:-|
 | Badge | [![MATLAB](https://github.com/mathworks/ci-configuration-examples/actions/workflows/ci.yml/badge.svg)](https://github.com/mathworks/ci-configuration-examples/actions/workflows/ci.yml) |
 | Badge Code | \[\!\[MATLAB](https[]()://github.com/***GITHUB_USERNAME***/***GITHUB_REPO_NAME***/actions/workflows/ci.yml/badge.svg)](https[]()://github.com/***GITHUB_USERNAME***/***GITHUB_REPO_NAME***/actions/workflows/ci.yml) |
 | Badge Help | [GitHub Actions documentation for setting up badges](https://docs.github.com/en/actions/managing-workflow-runs/adding-a-workflow-status-badge) |
-
-<br>
-
-| **GitLab&nbsp;CI/CD** |  |
-|:--------------------------|:-|
-| Badge Code | \[\!\[Pipeline Status](https[]()://gitlab.com/***GITLAB_PROJECT_PATH***/badges/***DEFAULT_BRANCH_NAME***/pipeline.svg)](https[]()://gitlab.com/***GITLAB_PROJECT_PATH***) |
-| Badge Help | [GitLab CI/CD documentation for setting up badges](https://docs.gitlab.com/ee/user/project/badges.html "GitLab CI/CD documentation for setting up badges") |
 
 <br>
 
@@ -87,30 +64,9 @@ Badges look really great, but they're not always easy to set up. Take a look at 
     * Replace ***GITHUB_ORG*** with your GitHub organization name (usually your GitHub username)
     * Replace ***GITHUB_REPO_NAME*** with the name of your GitHub repository
     * Replace ***SOURCE_CONTROL_SYSTEM*** with the name of the source control system you are pointing to (gh = GitHub, bb = BitBucket)
-    * Replace ***AZURE_DEVOPS_ORG*** with the name of your Azure DevOps organization name (usually your Azure DevOps username)
-    * Replace ***AZURE_DEVOPS_PROJECT_NAME*** with the name of the Azure DevOps project that will run the CI job
-    * Replace ***AZURE_DEVOPS_DEFINITION_ID*** with the definition ID for your Azure DevOps pipeline
-      * To find the definition ID for your Azure DevOps pipeline, you must:
-        * go to your Azure DevOps project
-        * select "Pipelines" from the left-side navigation menu
-        * select the pipeline you want to get coverage for
-        * look at the end of the resulting URL for the number in "definitionId=###"
-    * Replace ***GITLAB_PROJECT_PATH*** with the path of your GitLab project
     * Replace ***DEFAULT_BRANCH_NAME*** with the repository branch name you want to get the pipeline status from
 
 <br>
-<br>
-
-
-## Supported CI platforms
-* Azure DevOps
-* CircleCI
-* GitHub Actions
-* Jenkins&trade;
-* GitLab CI/CD
-
-<br>
-
 
 ## About the code
 The primary goal of this repository is to provide a set of configuration files as templates that illustrate how to run MATLAB on various CI platforms (e.g., Azure DevOps, CircleCI, GitHub Actions, Jenkins).
@@ -121,7 +77,6 @@ Each of these pipeline definitions does four things:
 2. Run all MATLAB tests in the root of your repository, including its subfolders
 3. Produce a test results report (if necessary)
 4. Produce a code coverage report in Cobertura XML format for the source folder
-   * Currently, only Azure DevOps supports code coverage directly
    * To see an example of using [Codecov](https://about.codecov.io/) to show coverage results, please refer to [https://github.com/mathworks/matlab-codecov-example](https://github.com/mathworks/matlab-codecov-example)
 
 The example MATLAB code example `dayofyear.m` is a simple function takes a date string `"mm/dd/yyyy"` and returns the day-of-year number.
@@ -141,67 +96,12 @@ The repository includes these files:
 | [`code/dayofyear.m`](code/dayofyear.m) | The [`dayofyear`](code/dayofyear.m) function returns the day-of-year number for a given date string "mm/dd/yyyy" |
 | [`tests/TestExamples.m`](tests/TestExamples.m) | The [`TestExamples`](tests/TestExamples.m) class provides a few equality and negative tests for the [`dayofyear`](code/dayofyear.m) function |
 | [`tests/ParameterizedTestExample.m`](tests/ParameterizedTestExample.m) | The [`ParameterizedTestExample`](tests/ParameterizedTestExample.m) class provides 12 tests for the [`dayofyear`](code/dayofyear.m) function using the parameterized test format |
-| [`azure-pipelines.yml`](###Azure-DevOps) | The [`azure-pipelines.yml`](azure-pipelines.yml) file defines the pipeline that runs on [Azure DevOps](https://marketplace.visualstudio.com/items?itemName=MathWorks.matlab-azure-devops-extension). |
-| [`.circleci/config.yml`](###CircleCI) | The [`config.yml`](.circleci/config.yml) file defines the pipeline that runs on [CircleCI](https://circleci.com/orbs/registry/orb/mathworks/matlab) |
 | [`.github/workflows/ci.yml`](###GitHub-Actions) | The [`ci.yml`](.github/workflows/ci.yml) file defines the pipeline that runs on [GitHub Actions](https://github.com/matlab-actions/overview) |
-| [`Jenkinsfile`](###Jenkins) | The [`Jenkinsfile`](Jenkinsfile) file defines the pipeline that runs on [Jenkins](https://plugins.jenkins.io/matlab/) |
-| [`.gitlab-ci.yml`](###GitLab-CI/CD) | The [`.gitlab-ci.yml`](.gitlab-ci.yml) file defines the pipeline that runs on [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) |
 
 <br>
 
 
-## CI configuration files
-
-### Azure DevOps
-```yml
-pool:
-  vmImage: ubuntu-latest
-steps:
-  - task: InstallMATLAB@1
-  - task: RunMATLABTests@1
-    inputs:
-      sourceFolder: code
-      codeCoverageCobertura: code-coverage/coverage.xml
-      testResultsJUnit: test-results/results.xml
-  - task: PublishTestResults@2
-    inputs:
-      testResultsFormat: 'JUnit'
-      testResultsFiles: 'test-results/results.xml'
-  - task: PublishCodeCoverageResults@1
-    inputs:
-      codeCoverageTool: 'Cobertura'
-      summaryFileLocation: 'code-coverage/coverage.xml'
-      pathToSources: 'code/'
-
-  # As an alternative to RunMATLABTests, you can use RunMATLABCommand to execute a MATLAB script, function, or statement.
-  # - task: RunMATLABCommand@1
-  #   inputs:
-  #     command: addpath('code'); results = runtests('IncludeSubfolders', true); assertSuccess(results);
-```
-
-<br>
-
-### CircleCI
-```yml
-version: 2.1
-orbs:
-  matlab: mathworks/matlab@1
-jobs:
-  build:
-    machine:
-      image: ubuntu-2204:current
-    steps:
-      - checkout
-      - matlab/install
-      - matlab/run-tests:
-          source-folder: code
-
-      # As an alternative to run-tests, you can use run-command to execute a MATLAB script, function, or statement.
-      # - matlab/run-command:
-      #     command: addpath('code'); results = runtests('IncludeSubfolders', true); assertSuccess(results);
-```
-
-<br>
+## CI configuration file
 
 ### GitHub Actions
 ```yml
@@ -253,40 +153,6 @@ jobs:
 ```
 
 <br>
-
-### Jenkins
-```groovy
-pipeline {
-  agent any
-  stages {
-    stage('Run MATLAB Tests') {
-      steps {
-        runMATLABTests(
-          sourceFolder: 'code'
-        )
-
-        // As an alternative to runMATLABTests, you can use runMATLABCommand to execute a MATLAB script, function, or statement.
-        // runMATLABCommand "addpath('code'); results = runtests('IncludeSubfolders', true); assertSuccess(results);"
-      }
-    }
-  }
-}
-```
-
-<br>
-
-### GitLab CI/CD
-```yml
-stages:         
-  - matlab-test
-
-matlab-test:       
-  stage: matlab-test
-  script:
-    - matlab -batch "addpath('code'); results = runtests('IncludeSubfolders', true); assertSuccess(results);"
-```
-<br>
-
 
 ## Caveats
 * On cloud-hosted agents provided by Azure DevOps, CircleCI, and GitHub Actions, you need a [MATLAB batch licensing token](https://github.com/mathworks-ref-arch/matlab-dockerfile/blob/main/alternates/non-interactive/MATLAB-BATCH.md#matlab-batch-licensing-token) if your project is private or if your pipeline includes transformation products, such as MATLAB Coder&trade; and MATLAB Compiler&trade;. You can request a token by contacting MathWorks&reg; at [batch-tokens@mathworks.com](mailto:batch-tokens@mathworks.com).
