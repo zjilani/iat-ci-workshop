@@ -29,26 +29,26 @@ jobs:
         uses: matlab-actions/setup-matlab@v2
 
       # TASK 0 - Runs a set of commands using the runners shell
-      # - name: Run MATLAB command
-      #   uses: matlab-actions/run-command@v2
-      #   with:
-      #     command: ver
+      - name: Run MATLAB command
+        uses: matlab-actions/run-command@v2
+        with:
+          command: ver
 
       # TASK 1 - Runs all tests in the repository with help of run-tests action
-      # - name: Run all tests
-      #   uses: matlab-actions/run-tests@v2
-      #   with:
-      #     source-folder: ??
+      - name: Run all tests
+        uses: matlab-actions/run-tests@v2
+        with:
+          source-folder: source
 
       # TASK 2 - Run all tests in the repository with help of run-build action
-      # - name: Run all tests using buildtool
-      #   uses: matlab-actions/run-build@v2
-      #   with:
-      #     tasks: ??
+      - name: Run all tests using buildtool
+        uses: matlab-actions/run-build@v2
+        with:
+          tasks: test
 
-      # - name: Upload test results
-      #   uses: actions/upload-artifact@v4
-      #   if: always()
-      #   with:
-      #     name: test-results
-      #     path: test-results/results.xml
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/results.xml
