@@ -1,7 +1,7 @@
 function plan = buildfile
 
 % Add the source folder to the path
-addpath("code");
+addpath("source");
 
 % Create a plan
 plan = buildplan(localfunctions);
@@ -11,4 +11,3 @@ plan("test") = matlab.buildtool.tasks.TestTask("tests");
 plan("test").Description = "Run all unit tests";
 
 end
-

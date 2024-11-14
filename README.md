@@ -26,7 +26,7 @@ Here's how to quickly get this repository running on a CI system:
 
 That's really it!
 
-To use your MATLAB code or Simulink<sup>&reg;</sup> models with this repository, simply replace the existing code and tests in "code" and "tests" with your own code and tests. There's no need to modify any of the CI configuration files because they are all completely agnostic of the MATLAB code being used.
+To use your MATLAB code or Simulink<sup>&reg;</sup> models with this repository, simply replace the existing code and tests in "source" and "tests" with your own code and tests. There's no need to modify any of the CI configuration files because they are all completely agnostic of the MATLAB code being used.
 
 ***Notes:***
 * In most cases, the configuration files will automatically get picked up by the CI platform during step 3, but some platforms may require you to specify which file to use
@@ -93,64 +93,10 @@ The repository includes these files:
 
 | **File Path**              | **Description** |
 |:---------------------------|:----------------|
-| [`code/dayofyear.m`](code/dayofyear.m) | The [`dayofyear`](code/dayofyear.m) function returns the day-of-year number for a given date string "mm/dd/yyyy" |
-| [`tests/TestExamples.m`](tests/TestExamples.m) | The [`TestExamples`](tests/TestExamples.m) class provides a few equality and negative tests for the [`dayofyear`](code/dayofyear.m) function |
-| [`tests/ParameterizedTestExample.m`](tests/ParameterizedTestExample.m) | The [`ParameterizedTestExample`](tests/ParameterizedTestExample.m) class provides 12 tests for the [`dayofyear`](code/dayofyear.m) function using the parameterized test format |
+| [`source/dayofyear.m`](source/dayofyear.m) | The [`dayofyear`](source/dayofyear.m) function returns the day-of-year number for a given date string "mm/dd/yyyy" |
+| [`tests/TestExamples.m`](tests/TestExamples.m) | The [`TestExamples`](tests/TestExamples.m) class provides a few equality and negative tests for the [`dayofyear`](source/dayofyear.m) function |
+| [`tests/ParameterizedTestExample.m`](tests/ParameterizedTestExample.m) | The [`ParameterizedTestExample`](tests/ParameterizedTestExample.m) class provides 12 tests for the [`dayofyear`](source/dayofyear.m) function using the parameterized test format |
 | [`.github/workflows/ci.yml`](###GitHub-Actions) | The [`ci.yml`](.github/workflows/ci.yml) file defines the pipeline that runs on [GitHub Actions](https://github.com/matlab-actions/overview) |
-
-<br>
-
-
-## CI configuration file
-
-### GitHub Actions
-```yml
-# This is a basic workflow to help you get started with MATLAB Actions
-
-name: MATLAB Build
-
-# Controls when the action will run. 
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      
-      # Sets up MATLAB on a GitHub-hosted runner
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v2
-
-      # Runs a set of commands using the runners shell
-      - name: Run all tests
-        uses: matlab-actions/run-tests@v2
-        with:
-          source-folder: code
-
-      # You can use "run-build" to invoke the MATLAB build tool and run build tasks
-      #- name: Run the default "test" task in the build file
-      #   uses: matlab-actions/run-build@v2
-
-      # You can use "run-command" to execute custom MATLAB scripts, functions, or statements
-      #- name: Run custom testing procedure
-      #  uses: matlab-actions/run-command@v2
-      #  with:
-      #    command: disp('Running my custom testing procedure!'); addpath('code'); results = runtests('IncludeSubfolders', true); assertSuccess(results);
-```
 
 <br>
 
