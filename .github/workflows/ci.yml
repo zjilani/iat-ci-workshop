@@ -6,7 +6,7 @@ name: MATLAB Build
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ staging ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -35,16 +35,16 @@ jobs:
           command: ver
 
       # TASK 1 - Runs all tests in the repository with help of run-tests action
-      - name: Run all tests
-        uses: matlab-actions/run-tests@v2
-        with:
-          source-folder: source
+      # - name: Run all tests
+      #   uses: matlab-actions/run-tests@v2
+      #   with:
+      #     source-folder: ??
 
       # TASK 2 - Run all tests in the repository with help of run-build action
-      - name: Run all tests using buildtool
-        uses: matlab-actions/run-build@v2
-        with:
-          tasks: test
+      # - name: Run all tests using buildtool
+      #   uses: matlab-actions/run-build@v2
+      #   with:
+      #     tasks: ??
 
       # TASK 3 - Run all tests in the repository with help of run-command action
       #- name: Run all tests using custom script
