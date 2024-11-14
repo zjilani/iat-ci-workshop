@@ -9,6 +9,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  fork:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -41,13 +42,14 @@ jobs:
       #     source-folder: ??
 
       # TASK 2 - Run all tests in the repository with help of run-build action
-      # - name: Run all tests using buildtool
-      #   uses: matlab-actions/run-build@v2
-      #   with:
-      #     tasks: ??
+      - name: Run all tests using buildtool
+        uses: matlab-actions/run-build@v2
+        with:
+          tasks: test
 
-      # TASK 3 - Run all tests in the repository with help of run-command action
-      #- name: Run all tests using custom script
-      #  uses: matlab-actions/run-command@v2
-      #  with:
-      #    command: ??
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: test-results/results.xml
