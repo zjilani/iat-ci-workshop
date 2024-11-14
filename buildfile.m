@@ -7,7 +7,7 @@ addpath("source");
 plan = buildplan(localfunctions);
 
 % Add a task to run tests
-plan("test") = matlab.buildtool.tasks.TestTask(Tests="tests", TestResults="test-results/results.xml");
+plan("test") = matlab.buildtool.tasks.TestTask("tests", TestResults="test-results/results.xml");
 plan("test").Description = "Run all unit tests";
 
 end
